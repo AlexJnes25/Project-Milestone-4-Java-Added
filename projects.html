@@ -1,87 +1,119 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Alex | Projects</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Alex in web development, digital design, and content creation.">
+  <title>Projects | Alex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">ALEX<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a class="nav-cta" href="about.html#contact">Contact Me</a>
+    </div>
+  </header>
 
-    <header id="header">
+  <main>
+    <section class="page-hero">
+      <div class="container narrow">
+        <p class="eyebrow">PORTFOLIO</p>
+        <h1>Projects that show what I'm learning and creating.</h1>
+        <p>
+          My work combines front-end development, visual design, and content creation.
+          Each project gives me a chance to improve both technical and creative skills.
+        </p>
+      </div>
+    </section>
 
-        <h1>Projects</h1>
+    <section class="section">
+      <div class="container project-stack">
+        <article class="project-row">
+          <div class="project-index">01</div>
+          <div class="project-content">
+            <span class="pill">WEB DEVELOPMENT</span>
+            <h2>Personal Portfolio Website</h2>
+            <p>
+              A responsive multi-page portfolio using semantic HTML, CSS, and JavaScript.
+              The project focuses on accessibility, responsive layouts, clear navigation, and polished presentation.
+            </p>
+            <div class="tech-list">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span>
+            </div>
+          </div>
+        </article>
 
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html" aria-current="page">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
+        <article class="project-row">
+          <div class="project-index">02</div>
+          <div class="project-content">
+            <span class="pill">CONTENT CREATION</span>
+            <h2>YouTube Graphics & Editing</h2>
+            <p>
+              Creative work for online video including thumbnails, banners, channel graphics, intros,
+              outros, and video editing.
+            </p>
+            <div class="tech-list">
+              <span>Thumbnails</span><span>Video Editing</span><span>Branding</span>
+            </div>
+          </div>
+        </article>
 
-    </header>
+        <article class="project-row">
+          <div class="project-index">03</div>
+          <div class="project-content">
+            <span class="pill">DESIGN</span>
+            <h2>Digital Design Projects</h2>
+            <p>
+              Visual concepts and graphics created to improve my understanding of composition,
+              hierarchy, balance, and user-focused design.
+            </p>
+            <div class="tech-list">
+              <span>Graphic Design</span><span>Visual Hierarchy</span><span>Creative Direction</span>
+            </div>
+          </div>
+        </article>
 
+        <article class="project-row">
+          <div class="project-index">04</div>
+          <div class="project-content">
+            <span class="pill">NEXT UP</span>
+            <h2>Future Front-End Projects</h2>
+            <p>
+              I plan to continue building projects that use more JavaScript, APIs,
+              interactive components, and stronger user experience design.
+            </p>
+            <div class="tech-list">
+              <span>JavaScript</span><span>APIs</span><span>UI/UX</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
 
-    <main class="container">
-
-        <section class="cards">
-
-            <article class="card">
-                <h2>Web Development</h2>
-
-                <h3>HTML Portfolio</h3>
-
-                <p>
-                    This website is my first portfolio built entirely with HTML.
-                </p>
-            </article>
-
-
-            <article class="card">
-                <h2>Content Creation</h2>
-
-                <h3>YouTube Graphics</h3>
-
-                <p>
-                    I enjoy creating YouTube intros, outros, thumbnails,
-                    and video edits.
-                </p>
-            </article>
-
-
-            <article class="card">
-                <h2>Future Projects</h2>
-
-                <p>
-                    As I learn CSS and JavaScript, I'll add more projects
-                    to this portfolio.
-                </p>
-            </article>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-
-        <p>More projects coming soon!</p>
-
-    </footer>
-
+  <footer>
+    <div class="container footer-wrap">
+      <div>
+        <a class="brand" href="index.html">ALEX<span>.</span></a>
+        <p>Student developer · Designer · Content creator</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+      </div>
+      <p class="copyright">© 2026 Alex</p>
+    </div>
+  </footer>
 </body>
-
 </html>
-```
