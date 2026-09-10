@@ -1,177 +1,94 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Alex | About Me</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about Alex, his skills, and how to get in touch.">
+  <title>About | Alex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">ALEX<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a class="active" href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a class="nav-cta" href="#contact">Contact Me</a>
+    </div>
+  </header>
 
-    <header id="header">
+  <main>
+    <section class="page-hero">
+      <div class="container narrow">
+        <p class="eyebrow">ABOUT ME</p>
+        <h1>Creative thinking backed by growing technical skills.</h1>
+        <p>
+          I'm a student and digital creator who enjoys building websites, editing videos,
+          designing graphics, and learning how technology can turn an idea into something people can use.
+        </p>
+      </div>
+    </section>
 
-        <h1>About Me</h1>
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <p class="eyebrow">MY APPROACH</p>
+          <h2>Learning through real projects.</h2>
+          <p>
+            I learn best by building. Every project helps me improve my code, design decisions,
+            organization, and problem-solving. My goal is to keep developing a portfolio that shows
+            both technical ability and creativity.
+          </p>
+        </div>
 
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html" aria-current="page">About</a></li>
-            </ul>
-        </nav>
+        <div class="skills-panel">
+          <p class="eyebrow">SKILLS</p>
+          <div class="skill-grid">
+            <div><strong>HTML</strong><span>Semantic structure</span></div>
+            <div><strong>CSS</strong><span>Responsive layouts</span></div>
+            <div><strong>JavaScript</strong><span>DOM & interactions</span></div>
+            <div><strong>Video Editing</strong><span>Digital content</span></div>
+            <div><strong>Graphic Design</strong><span>Visual communication</span></div>
+            <div><strong>Content Creation</strong><span>Online media</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </header>
+    <section class="section contact-section" id="contact">
+      <div class="container contact-card">
+        <div>
+          <p class="eyebrow">CONTACT</p>
+          <h2>Want to connect?</h2>
+          <p>
+            Add your professional email, GitHub profile, or other contact link here when you're ready to share it.
+          </p>
+        </div>
+        <a class="button primary" href="https://github.com/AlexJnes25" target="_blank" rel="noopener noreferrer">View My GitHub</a>
+      </div>
+    </section>
+  </main>
 
-
-    <main class="container">
-
-        <section class="cards">
-
-            <article class="card">
-                <h2>Biography</h2>
-
-                <p>
-                    My name is Alex. I enjoy learning new technology,
-                    building websites, editing videos, and creating
-                    content for YouTube.
-                </p>
-            </article>
-
-
-            <article class="card">
-  <h2>Skills</h2>
-
-  <button
-    id="toggleSkills"
-    type="button"
-    aria-expanded="true"
-    aria-controls="skillsList"
-  >
-    Hide Skills
-  </button>
-
-  <div id="skillsList">
-    <h3>Current Skills</h3>
-
-    <ul>
-      <li>HTML</li>
-      <li>Video Editing</li>
-      <li>Graphic Design</li>
-      <li>Content Creation</li>
-    </ul>
-  </div>
-</article>
-
-        </section>
-
-
-        <!-- Accessible Contact Form -->
-        <section class="form-section">
-
-            <h2>Contact Me</h2>
-
-            <form id="contactForm" action="#" method="post" novalidate>
-
-                <fieldset>
-
-                    <legend>Send me a message</legend>
-
-
-                    <div class="form-group">
-
-                        <label for="name">Name</label>
-
-                        <input
-                            type="text"
-                      id="name"
-                      name="name"
-                       required
-                       aria-describedby="name-error"
-                            
-                        >
-
-                      <span id="name-error" class="error-message" aria-live="polite">
-
-                      </span>
-                        
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="email">Email</label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            autocomplete="email"
-                            required
-                            aria-required="true"
-                            aria-describedby="email-error"
-                        >
-
-                       <span id="email-error" class="error-message" aria-live="polite">
-                        
-                        </span>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="message">Message</label>
-
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="6"
-                            required
-                            aria-required="true"
-                            aria-describedby="message-error"
-                        ></textarea>
-
-                        <span id="message-error" class="error-message" aria-live="polite">
-                        
-                        </span>
-
-                    </div>
-
-
-                    <button type="submit">Send Message</button>
-
-                </fieldset>
-
-            </form>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-
-        <p>Thanks for visiting my portfolio!</p>
-
-    </footer>
-    
-<script src="script.js">
-
-</script>
-    
+  <footer>
+    <div class="container footer-wrap">
+      <div>
+        <a class="brand" href="index.html">ALEX<span>.</span></a>
+        <p>Student developer · Designer · Content creator</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+      </div>
+      <p class="copyright">© 2026 Alex</p>
+    </div>
+  </footer>
 </body>
-
 </html>
-```
-
