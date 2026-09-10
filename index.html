@@ -1,87 +1,102 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Alex | Portfolio</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alex's personal portfolio featuring web development, content creation, and design projects.">
+  <title>Alex | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Alex</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About / Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <header id="header">
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">WEB DEVELOPMENT • DESIGN • CONTENT CREATION</p>
+          <h1>Hi, I'm Alex.</h1>
+          <p class="hero-copy">
+            I build websites, create digital designs, and edit content for online projects.
+            This portfolio highlights the work I have completed while growing my skills in web development and media.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="projects.html">View My Projects</a>
+            <a class="button button-secondary" href="about.html">About Me</a>
+          </div>
+        </div>
 
-        <h1>Alex's Portfolio</h1>
+        <aside class="quick-card" aria-label="Quick profile">
+          <span class="card-label">Current Focus</span>
+          <h2>Learning by building.</h2>
+          <p>I am continuing to improve my HTML, CSS, JavaScript, video editing, and graphic design skills.</p>
+        </aside>
+      </div>
+    </section>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">FEATURED WORK</p>
+          <h2>What I work on</h2>
+        </div>
 
-    </header>
+        <div class="card-grid">
+          <article class="project-card">
+            <span class="number">01</span>
+            <h3>Web Development</h3>
+            <p>Responsive websites built with HTML, CSS, and JavaScript.</p>
+          </article>
 
+          <article class="project-card">
+            <span class="number">02</span>
+            <h3>Content Creation</h3>
+            <p>YouTube graphics, thumbnails, video edits, and channel assets.</p>
+          </article>
 
-    <main class="container">
+          <article class="project-card">
+            <span class="number">03</span>
+            <h3>Graphic Design</h3>
+            <p>Visual concepts and digital designs created for personal projects.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <section class="cards">
+    <section class="section interactive-section">
+      <div class="container fact-box">
+        <div>
+          <p class="eyebrow">A LITTLE INTERACTION</p>
+          <h2>Want to know something about me?</h2>
+          <p id="factOutput" class="fact-output" aria-live="polite">
+            Click the button to show a random fact.
+          </p>
+        </div>
+        <button id="factButton" class="button" type="button">Get a Random Fact</button>
+      </div>
+    </section>
+  </main>
 
-            <article class="card">
-                <h2>Welcome</h2>
-
-                <p>
-                    Hello! Welcome to my personal portfolio. I enjoy creating YouTube
-                    content, learning web development, and editing videos.
-                    This website showcases my work and goals.
-                </p>
-            </article>
-
-
-            <article class="card">
-                <h2>Featured Project</h2>
-
-                <h3>YouTube Channel</h3>
-
-                <p>
-                    One of my favorite projects is creating YouTube videos and
-                    designing custom thumbnails.
-                </p>
-            </article>
-
-
-            <article class="card">
-                <h2>My Goals</h2>
-
-                <p>
-                    I want to continue improving my web development skills
-                    and create more creative digital projects.
-                </p>
-            </article>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-
-        <p>© 2026 Alex</p>
-
-    </footer>
-
+  <footer>
+    <div class="container footer-wrap">
+      <p>© 2026 Alex. All rights reserved.</p>
+      <a href="about.html">Contact</a>
+    </div>
+  </footer>
 </body>
-
 </html>
-```
