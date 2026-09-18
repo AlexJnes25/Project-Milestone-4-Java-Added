@@ -1,109 +1,210 @@
-const themeSelect = document.querySelector("#theme-select");
-const themeMessage = document.querySelector("#theme-message");
-const themes = ["blue", "green", "purple"];
-let savedTheme = "blue";
-try {
-  const stored = window.localStorage.getItem("alex-portfolio-theme");
-  if (themes.includes(stored)) savedTheme = stored;
-} catch (_error) {
-  // The theme still works when browser storage is unavailable.
-}
-document.body.dataset.theme = savedTheme;
-if (themeSelect) {
-  themeSelect.value = savedTheme;
-  if (themeMessage) themeMessage.textContent = `${savedTheme[0].toUpperCase()}${savedTheme.slice(1)} theme selected.`;
-  themeSelect.addEventListener("change", () => {
-    const nextTheme = themeSelect.value;
-    if (!themes.includes(nextTheme)) return;
-    document.body.dataset.theme = nextTheme;
-    if (themeMessage) themeMessage.textContent = `${nextTheme[0].toUpperCase()}${nextTheme.slice(1)} theme selected.`;
-    try { window.localStorage.setItem("alex-portfolio-theme", nextTheme); } catch (_error) { /* Optional storage. */ }
-  });
-}
+// ALEX'S PORTFOLIO JAVASCRIPT
 
-// DOM feature: add a genuine new LI, rather than exposing a pre-written list.
-const skillForm = document.querySelector("#skill-form");
-if (skillForm) {
-  const skillInput = document.querySelector("#skill-input");
-  const skillList = document.querySelector("#skills-list");
-  const skillMessage = document.querySelector("#skill-message");
-  skillForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const skill = skillInput.value.trim();
-    if (!skill) {
-      skillInput.setAttribute("aria-invalid", "true");
-      skillMessage.textContent = "Enter a skill before adding it.";
-      skillMessage.dataset.state = "error";
-      skillInput.focus();
-      return;
-    }
-    const alreadyExists = [...skillList.children].some((item) => item.textContent.toLowerCase() === skill.toLowerCase());
-    if (alreadyExists) {
-      skillInput.setAttribute("aria-invalid", "true");
-      skillMessage.textContent = "That skill is already in the list.";
-      skillMessage.dataset.state = "error";
-      skillInput.focus();
-      return;
-    }
-    const item = document.createElement("li");
-    item.textContent = skill; // textContent prevents HTML injection.
-    skillList.appendChild(item);
-    skillInput.removeAttribute("aria-invalid");
-    skillMessage.dataset.state = "success";
-    skillMessage.textContent = `${skill} added to the list.`;
-    skillInput.value = "";
-    skillInput.focus();
-  });
-  skillInput.addEventListener("input", () => {
-    skillInput.removeAttribute("aria-invalid");
-    skillMessage.textContent = "";
-    skillMessage.removeAttribute("data-state");
-  });
-}
+document.addEventListener("DOMContentLoaded", function () {
 
-// Client-side form validation demo. It intentionally never sends or saves messages.
-const contactForm = document.querySelector("#contact-form");
-if (contactForm) {
-  const fields = [
-    { input: document.querySelector("#contact-name"), error: document.querySelector("#name-error"), label: "name" },
-    { input: document.querySelector("#contact-email"), error: document.querySelector("#email-error"), label: "email" },
-    { input: document.querySelector("#contact-message"), error: document.querySelector("#message-error"), label: "message" }
-  ];
-  const status = document.querySelector("#form-status");
-  const showError = (field, message) => {
-    field.error.textContent = message;
-    if (message) field.input.setAttribute("aria-invalid", "true");
-    else field.input.removeAttribute("aria-invalid");
-  };
-  const validate = (field) => {
-    const value = field.input.value.trim();
-    if (!value) {
-      showError(field, `Please enter your ${field.label}.`);
-      return false;
+  // ==================================
+  // 1. ADD A SKILL
+  // ==================================
+
+  const skillInput =
+    document.getElementById("skillInput");
+
+  const addSkillButton =
+    document.getElementById("addSkillButton");
+
+  const skillsList =
+    document.getElementById("skillsList");
+
+  const statusMessage =
+    document.getElementById("statusMessage");
+
+  if (skillInput && addSkillButton && skillsList) {
+
+    function addSkill() {
+
+      const skill = skillInput.value.trim();
+
+      if (skill === "") {
+        if (statusMessage) {
+          statusMessage.textContent =
+            "Please enter a skill first.";
+        }
+
+        skillInput.focus();
+        return;
+      }
+
+      const item = document.createElement("li");
+
+      item.textContent = skill;
+
+      skillsList.appendChild(item);
+
+      if (statusMessage) {
+        statusMessage.textContent =
+          skill + " was added successfully!";
+      }
+
+      skillInput.value = "";
+
+      skillInput.focus();
     }
-    if (field.label === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      showError(field, "Enter a valid email address, such as name@example.com.");
-      return false;
+
+    addSkillButton.addEventListener("click", addSkill);
+
+    skillInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        addSkill();
+      }
+    });
+
+  }
+
+
+  // ==================================
+  // 2. THEME SELECTOR
+  // ==================================
+
+  const themeSelect =
+    document.getElementById("themeSelect");
+
+  if (themeSelect) {
+
+    themeSelect.addEventListener("change", function () {
+
+      document.body.classList.remove(
+        "theme-blue",
+        "theme-green",
+        "theme-purple"
+      );
+
+      document.body.classList.add(
+        "theme-" + themeSelect.value
+      );
+
+    });
+
+  }
+
+
+  // ==================================
+  // 3. CONTACT FORM VALIDATION
+  // ==================================
+
+  const contactForm =
+    document.getElementById("contact-form");
+
+  if (contactForm) {
+
+    const nameInput =
+      document.getElementById("contact-name");
+
+    const emailInput =
+      document.getElementById("contact-email");
+
+    const messageInput =
+      document.getElementById("contact-message");
+
+    const formStatus =
+      document.getElementById("form-status");
+
+    const fields = [
+      {
+        input: nameInput,
+        error: document.getElementById("name-error")
+      },
+      {
+        input: emailInput,
+        error: document.getElementById("email-error")
+      },
+      {
+        input: messageInput,
+        error: document.getElementById("message-error")
+      }
+    ];
+
+    function showError(field, message) {
+      field.input.setAttribute("aria-invalid", "true");
+      field.error.textContent = message;
     }
-    showError(field, "");
-    return true;
-  };
-  fields.forEach((field) => field.input.addEventListener("input", () => {
-    if (field.input.getAttribute("aria-invalid") === "true") validate(field);
-    status.textContent = "";
-    status.removeAttribute("data-state");
-  }));
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    let firstInvalid = null;
-    fields.forEach((field) => { if (!validate(field) && !firstInvalid) firstInvalid = field.input; });
-    if (firstInvalid) {
-      status.dataset.state = "error";
-      status.textContent = "Please fix the highlighted fields. Your message has not been sent.";
-      firstInvalid.focus();
-      return;
+
+    function clearError(field) {
+      field.input.removeAttribute("aria-invalid");
+      field.error.textContent = "";
     }
-    status.dataset.state = "success";
-    status.textContent = "Validation successful! This is a demo, so no message was sent or saved. Contact me through GitHub instead.";
-  });
-}
+
+    fields.forEach(function (field) {
+      field.input.addEventListener("input", function () {
+        clearError(field);
+        formStatus.textContent = "";
+      });
+    });
+
+    contactForm.addEventListener("submit", function (event) {
+
+      // Stop the browser from refreshing the page.
+      event.preventDefault();
+
+      let valid = true;
+      let firstInvalid = null;
+
+      formStatus.textContent = "";
+
+      fields.forEach(clearError);
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const message = messageInput.value.trim();
+
+      function markInvalid(field, message) {
+        showError(field, message);
+        valid = false;
+
+        if (!firstInvalid) {
+          firstInvalid = field.input;
+        }
+      }
+
+      // Validate name
+      if (name === "") {
+        markInvalid(fields[0], "Please enter your name.");
+      }
+
+      // Validate email
+      if (email === "") {
+        markInvalid(fields[1], "Please enter your email.");
+      } else if (!emailInput.validity.valid) {
+        markInvalid(fields[1], "Please enter a valid email address.");
+      }
+
+      // Validate message
+      if (message === "") {
+        markInvalid(fields[2], "Please enter a message.");
+      }
+
+      // Stop if any fields are invalid.
+      if (!valid) {
+        formStatus.textContent =
+          "Please correct the errors in the form.";
+
+        formStatus.className = "form-message error";
+
+        firstInvalid.focus();
+        return;
+      }
+
+      // All fields passed validation.
+      formStatus.textContent =
+        "Success! Your form passed validation. " +
+        "This is a demo, so no message was sent.";
+
+      formStatus.className = "form-message success";
+
+      contactForm.reset();
+
+    });
+
+  }
+
+});
