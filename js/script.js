@@ -1,21 +1,5 @@
-// ADD SKILL INTERACTION
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const skillInput =
-    document.getElementById("skillInput");
-
-  const addSkillButton =
-    document.getElementById("addSkillButton");
-
-  const skillsList =
-    document.getElementById("skillsList");
-
-  const statusMessage =
-    document.getElementById("statusMessage");
-
- // ======================================
-// WORKING SKILLS LIST
+// ======================================
+// ALEX'S PORTFOLIO - SKILLS LIST
 // ======================================
 
 function initializeSkills() {
@@ -25,7 +9,7 @@ function initializeSkills() {
   const list = document.getElementById("skillsList");
   const status = document.getElementById("statusMessage");
 
-  // Skip this feature on pages without a skills list.
+  // Skip pages that don't contain the skills feature.
   if (!input || !button || !list || !status) {
     return;
   }
@@ -34,32 +18,33 @@ function initializeSkills() {
 
     const skill = input.value.trim();
 
+    // Check for empty input.
     if (skill === "") {
       status.textContent = "Please enter a skill first.";
       input.focus();
       return;
     }
 
-    // Create a new list item using JavaScript.
+    // Create a new skill using JavaScript.
     const newItem = document.createElement("li");
 
     newItem.textContent = skill;
 
-    // Add it to the actual HTML list.
+    // Add the skill to the list.
     list.appendChild(newItem);
 
-    // Show confirmation.
+    // Display success message.
     status.textContent = skill + " added successfully!";
 
-    // Clear the input.
+    // Clear input.
     input.value = "";
     input.focus();
   }
 
-  // Mouse and keyboard button activation.
+  // Add skill when button is clicked.
   button.addEventListener("click", addNewSkill);
 
-  // Allow Enter inside the input field.
+  // Add skill when Enter is pressed.
   input.addEventListener("keydown", function(event) {
 
     if (event.key === "Enter") {
@@ -72,14 +57,16 @@ function initializeSkills() {
   console.log("Skills feature initialized successfully!");
 }
 
-// Run when the page is ready.
+// Run JavaScript when the page is ready.
 if (document.readyState === "loading") {
+
   document.addEventListener(
     "DOMContentLoaded",
     initializeSkills
   );
+
 } else {
+
   initializeSkills();
+
 }
-  
-});
