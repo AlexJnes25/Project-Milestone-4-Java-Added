@@ -1,4 +1,4 @@
-root{font-family:Arial,Helvetica,sans-serif;color-scheme:light;font-synthesis:none}
+:root{font-family:Arial,Helvetica,sans-serif;color-scheme:light;font-synthesis:none}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{--accent:#1553ad;--accent-dark:#103c7d;--wash:#eaf2ff;--surface:#f5f8fc;margin:0;min-width:0;background:#fff;color:#192a40;line-height:1.65}
