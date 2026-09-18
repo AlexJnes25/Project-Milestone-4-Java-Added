@@ -1,10 +1,6 @@
-// ALEX'S PORTFOLIO JAVASCRIPT
+// ADD SKILL INTERACTION
 
 document.addEventListener("DOMContentLoaded", function () {
-
-  // ==================================
-  // 1. ADD A SKILL
-  // ==================================
 
   const skillInput =
     document.getElementById("skillInput");
@@ -18,50 +14,50 @@ document.addEventListener("DOMContentLoaded", function () {
   const statusMessage =
     document.getElementById("statusMessage");
 
-  if (skillInput && addSkillButton && skillsList) {
-
-    function addSkill() {
-
-      const skill = skillInput.value.trim();
-
-      if (skill === "") {
-        if (statusMessage) {
-          statusMessage.textContent =
-            "Please enter a skill first.";
-        }
-
-        skillInput.focus();
-        return;
-      }
-
-      const item = document.createElement("li");
-
-      item.textContent = skill;
-
-      skillsList.appendChild(item);
-
-      if (statusMessage) {
-        statusMessage.textContent =
-          skill + " was added successfully!";
-      }
-
-      skillInput.value = "";
-
-      skillInput.focus();
-    }
-
-    addSkillButton.addEventListener("click", addSkill);
-
-    skillInput.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        addSkill();
-      }
-    });
-
+  if (!skillInput || !addSkillButton ||
+      !skillsList || !statusMessage) {
+    console.error("Skill elements not found.");
+    return;
   }
 
+  function addSkill() {
 
+    const newSkill = skillInput.value.trim();
+
+    if (newSkill === "") {
+      statusMessage.textContent =
+        "Please enter a skill first.";
+
+      skillInput.focus();
+      return;
+    }
+
+    const newItem = document.createElement("li");
+
+    newItem.textContent = newSkill;
+
+    skillsList.appendChild(newItem);
+
+    statusMessage.textContent =
+      newSkill + " was added successfully!";
+
+    skillInput.value = "";
+
+    skillInput.focus();
+  }
+
+  addSkillButton.addEventListener("click", addSkill);
+
+  skillInput.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addSkill();
+    }
+
+  });
+
+});
   // ==================================
   // 2. THEME SELECTOR
   // ==================================
