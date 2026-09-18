@@ -786,3 +786,154 @@ textarea[aria-invalid="true"] {
   }
 
 }
+/* =====================================
+   FINAL PORTFOLIO LAYOUT IMPROVEMENTS
+===================================== */
+
+/* HOME PAGE LAYOUT */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-grid > * {
+  min-width: 0;
+}
+
+/* HOME PAGE BUTTONS */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* HOME PAGE CARDS */
+
+.cards {
+  display: grid;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.three-cols {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.two-cols {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cards > * {
+  min-width: 0;
+}
+
+/* INTERACTIVE SKILLS LIST */
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.skills-list li {
+  background: #dbeafe;
+  color: #172554;
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* FEATURE PANEL */
+
+.feature-panel .eyebrow {
+  color: #1d4ed8;
+}
+
+/* PROJECTS PAGE */
+
+.project-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.project-index {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1d4ed8;
+  margin-bottom: 15px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.tag-list li,
+.tag-list span {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 25px;
+  background: #dbeafe;
+  color: #172554;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+/* CONTACT CALLOUT */
+
+.callout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+/* TABLET */
+
+@media (max-width: 768px) {
+
+  .hero-grid,
+  .three-cols,
+  .two-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .callout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+/* MOBILE - 320PX */
+
+@media (max-width: 420px) {
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-index {
+    font-size: 2rem;
+  }
+
+  .cards {
+    gap: 20px;
+  }
+
+}
