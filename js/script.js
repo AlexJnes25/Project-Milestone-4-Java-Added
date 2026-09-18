@@ -14,60 +14,70 @@ document.addEventListener("DOMContentLoaded", function () {
   const statusMessage =
     document.getElementById("statusMessage");
 
-  // SKILLS LIST
+ // ======================================
+// WORKING SKILLS LIST
+// ======================================
 
-const skillInput =
-  document.getElementById("skillInput");
+function initializeSkills() {
 
-const addSkillButton =
-  document.getElementById("addSkillButton");
+  const input = document.getElementById("skillInput");
+  const button = document.getElementById("addSkillButton");
+  const list = document.getElementById("skillsList");
+  const status = document.getElementById("statusMessage");
 
-const skillsList =
-  document.getElementById("skillsList");
+  // Skip this feature on pages without a skills list.
+  if (!input || !button || !list || !status) {
+    return;
+  }
 
-const statusMessage =
-  document.getElementById("statusMessage");
+  function addNewSkill() {
 
-if (skillInput && addSkillButton &&
-    skillsList && statusMessage) {
-
-  function addSkill() {
-
-    const skill = skillInput.value.trim();
+    const skill = input.value.trim();
 
     if (skill === "") {
-      statusMessage.textContent =
-        "Please enter a skill first.";
-      skillInput.focus();
+      status.textContent = "Please enter a skill first.";
+      input.focus();
       return;
     }
 
-    const li = document.createElement("li");
+    // Create a new list item using JavaScript.
+    const newItem = document.createElement("li");
 
-    li.textContent = skill;
+    newItem.textContent = skill;
 
-    skillsList.appendChild(li);
+    // Add it to the actual HTML list.
+    list.appendChild(newItem);
 
-    statusMessage.textContent =
-      skill + " added successfully!";
+    // Show confirmation.
+    status.textContent = skill + " added successfully!";
 
-    skillInput.value = "";
-    skillInput.focus();
+    // Clear the input.
+    input.value = "";
+    input.focus();
   }
 
-  addSkillButton.addEventListener(
-    "click",
-    addSkill
-  );
+  // Mouse and keyboard button activation.
+  button.addEventListener("click", addNewSkill);
 
-  skillInput.addEventListener(
-    "keydown",
-    function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        addSkill();
-      }
+  // Allow Enter inside the input field.
+  input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addNewSkill();
     }
-  );
 
+  });
+
+  console.log("Skills feature initialized successfully!");
+}
+
+// Run when the page is ready.
+if (document.readyState === "loading") {
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeSkills
+  );
+} else {
+  initializeSkills();
 }
