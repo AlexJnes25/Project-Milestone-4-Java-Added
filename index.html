@@ -1,470 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alex's student portfolio featuring web development, design, and content creation projects.">
-  <title>Alex | Student Web Developer & Creator</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      color: #172033;
-      background: #f7f9fc;
-    }
-
-    a {
-      color: #0047b3;
-    }
-
-    a:focus,
-    button:focus,
-    input:focus,
-    select:focus {
-      outline: 3px solid #ffbf47;
-      outline-offset: 3px;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      background: #ffffff;
-      color: #111111;
-      padding: 0.75rem 1rem;
-      z-index: 1000;
-    }
-
-    .skip-link:focus {
-      left: 1rem;
-      top: 1rem;
-    }
-
-    .container {
-      width: min(1100px, 92%);
-      margin: 0 auto;
-    }
-
-    header {
-      background: #0b1f3a;
-      color: #ffffff;
-    }
-
-    .nav-wrap {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
-      color: #ffffff;
-      font-size: 1.45rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    nav ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #ffffff;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      text-decoration: underline;
-    }
-
-    .hero {
-      background: #e8f1ff;
-      padding: 5rem 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .eyebrow {
-      color: #123d7a;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3 {
-      line-height: 1.2;
-      color: #0b1f3a;
-    }
-
-    h1 {
-      margin: 0.25rem 0 1rem;
-      font-size: clamp(2.25rem, 5vw, 4rem);
-    }
-
-    h2 {
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-    }
-
-    .hero p {
-      max-width: 62ch;
-      font-size: 1.05rem;
-    }
-
-    .button {
-      display: inline-block;
-      border: 2px solid #0b1f3a;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      background: #0b1f3a;
-      color: #ffffff;
-      font: inherit;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      background: #173c6d;
-    }
-
-    .button.secondary {
-      background: #ffffff;
-      color: #0b1f3a;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-
-    .hero-card,
-    .card,
-    .interactive-box {
-      background: #ffffff;
-      border: 1px solid #c8d3e1;
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 24px rgba(11, 31, 58, 0.08);
-    }
-
-    section {
-      padding: 4rem 0;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
-    .skills-list {
-      padding-left: 1.25rem;
-    }
-
-    .interactive-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      align-items: start;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: 700;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 0.85rem;
-      border: 2px solid #7b8796;
-      border-radius: 6px;
-      background: #ffffff;
-      color: #111111;
-      font: inherit;
-    }
-
-    #statusMessage {
-      min-height: 1.5rem;
-      font-weight: 700;
-    }
-
-    footer {
-      background: #0b1f3a;
-      color: #ffffff;
-      padding: 2rem 0;
-    }
-
-    footer p {
-      margin: 0;
-    }
-
-    .theme-blue {
-      background: #f7f9fc;
-    }
-
-    .theme-blue .hero {
-      background: #e8f1ff;
-    }
-
-    .theme-green {
-      background: #f4fbf6;
-    }
-
-    .theme-green .hero {
-      background: #dff3e5;
-    }
-
-    .theme-purple {
-      background: #faf7ff;
-    }
-
-    .theme-purple .hero {
-      background: #eee4ff;
-    }
-
-    @media (max-width: 768px) {
-      .nav-wrap,
-      .hero-grid,
-      .interactive-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      nav ul {
-        gap: 0.85rem;
-      }
-
-      .hero {
-        padding: 3.5rem 0;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .container {
-        width: 94%;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .actions {
-        flex-direction: column;
-      }
-
-      .button {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alex's portfolio: front-end development, digital design, and YouTube content creation.">
+  <title>Home | Alex's Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 </head>
-
-<body class="theme-blue">
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  <header>
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">Alex Portfolio</a>
-
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
+<body data-theme="blue">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">ALEX<span class="brand-dot">.</span><span class="visually-hidden"> Home</span></a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About &amp; Contact</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main id="main-content">
+  <section class="hero" aria-labelledby="intro-heading">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">WEB DEVELOPMENT / DESIGN / CONTENT</p>
+        <h1 id="intro-heading">Hi, I'm Alex.<br><span class="accent-text">I build and create.</span></h1>
+        <p class="lead">I'm a student web developer and digital creator. I build accessible websites, design graphics, and make video content while developing my front-end skills.</p>
+        <div class="actions"><a class="button primary" href="projects.html">Explore my projects</a><a class="button secondary" href="about.html#contact">Contact me</a></div>
+      </div>
+      <div class="feature-panel"><p class="eyebrow">CURRENT FOCUS</p><h2>Building better web experiences.</h2><p>I'm practicing semantic HTML, CSS Grid and Flexbox, JavaScript interactions, responsive layouts, and accessibility.</p><div class="tag-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Accessibility</span></div></div>
     </div>
-  </header>
-
-  <main id="main-content">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Web Development · Design · Content Creation</p>
-          <h1>Hi, I'm Alex.</h1>
-          <p>
-            I am a student learning web development while also working on digital design
-            and content creation. I enjoy building websites that are simple, responsive,
-            and easy for people to use.
-          </p>
-
-          <div class="actions">
-            <a class="button" href="projects.html">View My Projects</a>
-            <a class="button secondary" href="about.html">Learn More About Me</a>
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-labelledby="focus-heading">
-          <h2 id="focus-heading">What I'm Working On</h2>
-          <p>
-            Right now I am improving my HTML, CSS, JavaScript, responsive design,
-            and accessibility skills.
-          </p>
-        </aside>
+  </section>
+  <section class="section" aria-labelledby="what-heading">
+    <div class="container"><p class="eyebrow">WHAT I DO</p><h2 id="what-heading">Creative skills, practical projects.</h2>
+      <div class="cards three-cols">
+        <article class="card"><span class="card-number" aria-hidden="true">01</span><h3>Web development</h3><p>I create multi-page websites with clear navigation, responsive layouts, and interactive JavaScript features.</p></article>
+        <article class="card"><span class="card-number" aria-hidden="true">02</span><h3>Digital design</h3><p>I work with layout, color, and visual hierarchy to create graphics and make websites easier to use.</p></article>
+        <article class="card"><span class="card-number" aria-hidden="true">03</span><h3>Content creation</h3><p>I create YouTube thumbnails, channel banners, video intros, outros, and edited video content.</p></article>
       </div>
-    </section>
-
-    <section aria-labelledby="work-heading">
-      <div class="container">
-        <p class="eyebrow">My Work</p>
-        <h2 id="work-heading">What I Create</h2>
-
-        <div class="card-grid">
-          <article class="card">
-            <h3>Web Development</h3>
-            <p>
-              I build multi-page websites using semantic HTML, CSS, and JavaScript.
-              I also work on making my pages responsive for phones and computers.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Content Creation</h3>
-            <p>
-              I create YouTube thumbnails, banners, intros, outros, and other content
-              for online projects.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Digital Design</h3>
-            <p>
-              I enjoy creating graphics and improving the visual layout of my projects
-              so they look clean and organized.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="interactive-heading">
-      <div class="container">
-        <p class="eyebrow">JavaScript Interaction</p>
-        <h2 id="interactive-heading">Try My Interactive Features</h2>
-
-        <div class="interactive-grid">
-          <div class="interactive-box">
-            <h3>Add a Skill</h3>
-            <p>
-              Type a skill below and JavaScript will add it to the list.
-            </p>
-
-            <label for="skillInput">Skill name</label>
-            <input
-              type="text"
-              id="skillInput"
-              name="skillInput"
-              maxlength="40"
-              placeholder="Example: Graphic Design"
-            >
-
-            <button class="button" id="addSkillButton" type="button">Add Skill</button>
-
-            <p id="statusMessage" aria-live="polite"></p>
-
-            <h3>My Skills</h3>
-            <ul id="skillsList" class="skills-list">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-          </div>
-
-          <div class="interactive-box">
-            <h3>Change the Page Style</h3>
-            <p>
-              Choose a theme and JavaScript will change the page colors.
-            </p>
-
-            <label for="themeSelect">Choose a theme</label>
-            <select id="themeSelect" name="themeSelect">
-              <option value="blue">Blue</option>
-              <option value="green">Green</option>
-              <option value="purple">Purple</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Alex. Student web development portfolio.</p>
     </div>
-  </footer>
-
-  <script>
-    const skillInput = document.getElementById("skillInput");
-    const addSkillButton = document.getElementById("addSkillButton");
-    const skillsList = document.getElementById("skillsList");
-    const statusMessage = document.getElementById("statusMessage");
-    const themeSelect = document.getElementById("themeSelect");
-
-    addSkillButton.addEventListener("click", function () {
-      const newSkill = skillInput.value.trim();
-
-      if (newSkill === "") {
-        statusMessage.textContent = "Please enter a skill first.";
-        skillInput.focus();
-        return;
-      }
-
-      const listItem = document.createElement("li");
-      listItem.textContent = newSkill;
-      skillsList.appendChild(listItem);
-
-      statusMessage.textContent = newSkill + " was added to the list.";
-      skillInput.value = "";
-      skillInput.focus();
-    });
-
-    themeSelect.addEventListener("change", function () {
-      document.body.classList.remove("theme-blue", "theme-green", "theme-purple");
-      document.body.classList.add("theme-" + themeSelect.value);
-    });
-  </script>
+  </section>
+  <section class="section section-alt" aria-labelledby="interaction-heading">
+    <div class="container"><p class="eyebrow">INTERACTIVE DEMO</p><h2 id="interaction-heading">Try my JavaScript features.</h2><p class="section-intro">These controls use JavaScript to update the page without reloading it. You can use them with a keyboard.</p>
+      <div class="cards two-cols">
+        <div class="card"><h3>Add a skill to the list</h3><p>Type a new skill and press Enter or select Add skill.</p>
+          <form id="skill-form" novalidate><label for="skill-input">Skill name</label><div class="input-action"><input id="skill-input" name="skill" type="text" maxlength="40" autocomplete="off" aria-describedby="skill-message"><button class="button primary" type="submit">Add skill</button></div></form>
+          <p id="skill-message" class="form-message" role="status" aria-live="polite"></p><h4>My skills</h4><ul id="skills-list" class="skill-list"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+        </div>
+        <div class="card"><h3>Change the site's colors</h3><p>Choose a color theme. JavaScript updates the styles on every page.</p><label for="theme-select">Color theme</label><select id="theme-select" name="theme"><option value="blue">Blue</option><option value="green">Green</option><option value="purple">Purple</option></select><p id="theme-message" class="form-message" role="status" aria-live="polite">Blue theme selected.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section"><div class="container callout"><div><p class="eyebrow">SEE THE WORK</p><h2>Explore what I've made.</h2><p>Read about my portfolio website, design practice, and content creation.</p></div><a class="button primary" href="projects.html">View projects</a></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-wrap"><div><a href="index.html" class="brand">ALEX<span class="brand-dot">.</span></a><p>Student developer · Designer · Content creator</p></div><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About &amp; Contact</a></nav><p>© 2026 Alex</p></div></footer>
 </body>
 </html>
