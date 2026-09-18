@@ -937,3 +937,30 @@ textarea[aria-invalid="true"] {
   }
 
 }
+/* GREEN THEME */
+
+body[data-theme="green"] {
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(22, 163, 74, 0.35),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #052e16, #14532d, #020617);
+
+  background-attachment: fixed;
+}
+
+/* PURPLE THEME */
+
+body[data-theme="purple"] {
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(147, 51, 234, 0.35),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #2e1065, #581c87, #020617);
+
+  background-attachment: fixed;
+}
