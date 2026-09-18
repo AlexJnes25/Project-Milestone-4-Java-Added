@@ -42,7 +42,42 @@
   <section class="section section-alt" aria-labelledby="interaction-heading">
     <div class="container"><p class="eyebrow">INTERACTIVE DEMO</p><h2 id="interaction-heading">Try my JavaScript features.</h2><p class="section-intro">These controls use JavaScript to update the page without reloading it. You can use them with a keyboard.</p>
       <div class="cards two-cols">
-        <div class="card"><h3>Add a skill to the list</h3><p>Type a new skill and press Enter or select Add skill.</p>
+        <div class="card">
+  <h3>Add a skill to the list</h3>
+
+  <p>
+    Type a skill and click Add Skill.
+  </p>
+
+  <label for="skillInput">Skill name</label>
+
+  <input
+    type="text"
+    id="skillInput"
+    maxlength="40"
+    placeholder="Example: React"
+  >
+
+  <button
+    type="button"
+    id="addSkillButton"
+    class="button primary"
+  >
+    Add Skill
+  </button>
+
+  <p id="statusMessage"
+     role="status"
+     aria-live="polite"></p>
+
+  <h3>My Skills</h3>
+
+  <ul id="skillsList" class="skills-list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+</div>
           <form id="skill-form" novalidate><label for="skill-input">Skill name</label><div class="input-action"><input id="skill-input" name="skill" type="text" maxlength="40" autocomplete="off" aria-describedby="skill-message"><button class="button primary" type="submit">Add skill</button></div></form>
           <p id="skill-message" class="form-message" role="status" aria-live="polite"></p><h4>My skills</h4><ul id="skills-list" class="skill-list"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
         </div>
