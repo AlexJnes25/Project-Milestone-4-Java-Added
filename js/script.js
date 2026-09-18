@@ -235,3 +235,51 @@ if (document.readyState === "loading") {
   initializeContactForm();
 
 }
+// ======================================
+// COLOR THEME SELECTOR
+// ======================================
+
+function initializeTheme() {
+
+  const themeSelect =
+    document.getElementById("theme-select");
+
+  const themeMessage =
+    document.getElementById("theme-message");
+
+  // Skip pages without the selector.
+  if (!themeSelect || !themeMessage) {
+    return;
+  }
+
+  themeSelect.addEventListener("change", function() {
+
+    const selectedTheme = themeSelect.value;
+
+    document.body.setAttribute(
+      "data-theme",
+      selectedTheme
+    );
+
+    themeMessage.textContent =
+      selectedTheme.charAt(0).toUpperCase() +
+      selectedTheme.slice(1) +
+      " theme selected.";
+
+  });
+
+}
+
+// Initialize the feature when the page is ready.
+if (document.readyState === "loading") {
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeTheme
+  );
+
+} else {
+
+  initializeTheme();
+
+}
